@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- **************Context Config for PassBooking ******************** -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd，
+		http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd">
+
+	<context:component-scan base-package="com.liu.demo" />
+	<mvc:annotation-driven />  
+	
+<bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+   <property name="locations">  
+       <list>  
+           <value>/WEB-INF/config/db.properties</value>
+       </list>  
+   </property>  
+</bean>  
+
+<!-- DB Configuration -->
+
+    <bean id="testDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
+       <property name="driverClassName">  
+           <value>${db.dirverClass}</value>  
+       </property>  
+       <property name="url">  
+           <value>${db.url}</value>  
+       </property>  
+       <property name="username">  
+           <value>${db.username}</value>  
+       </property>  
+       <property name="password">  
+           <value>${db.password}</value>  
+       </property>  
+    </bean> 
+    
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource">
+			<ref bean="testDataSource" />
+		</property>
+	</bean>
+
+<!-- View Mapping -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+		<property name="redirectHttp10Compatible" value="false" />
+		<property name="viewClass">
+			<value>org.springframework.web.servlet.view.JstlView</value>
+		</property>
+	</bean>
+	
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+
+</beans>

@@ -1,0 +1,37 @@
+/**
+ * Copyright (C) 2014-2015  Roche 
+ */  
+
+.show-grid1{
+	margin-top: 50px;
+	margin-right: 40px;
+}
+
+.show-grid2{
+	margin-top: 60px;
+}
+
+.right{
+	float: right;
+}
+
+/* TODO : should be flexible*/
+#divHome{
+	margin-left:auto;
+	margin-right:auto;
+	/*width:40%;*/ 
+}
+
+
+#tblMyBooks tbody tr td{
+  text-align: center;
+  vertical-align:middle
+}
+
+#tblPeriods{
+	border:2px solid #ddd;
+}
+
+#tblPeriods tr:nth-child(2){
+	border-bottom:2px solid #ddd;
+}

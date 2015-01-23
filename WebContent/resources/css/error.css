@@ -1,0 +1,37 @@
+/**
+ * Copyright (C) 2014-2015  Roche 
+ */  
+
+.errorcontent
+{
+    padding: 20px;
+    /*border: 2px solid red;*/
+    margin: 35px 15px;
+}
+.errorcontent h2
+{
+    color: Red;
+    margin: 0;
+}
+
+.errorcontent h3
+{
+    color: Red;
+    margin: 0;
+}
+
+.errorcontent p
+{
+    margin: 0;
+}
+
+.errorcontent div
+{
+    margin-top:20px;
+}
+
+.errorcontent a
+{
+    color: blue;
+    text-decoration:underline;
+}

@@ -1,0 +1,64 @@
+/**
+ * Copyright (C) 2014-2015  Roche 
+ */  
+
+.login-center {
+	float: none;
+	margin: 0 auto;
+	width: 340px;
+}
+
+.login-header {
+	padding: 80px 0px 50px 0px;
+	color: #5694b9;;
+	text-align: center;
+	font-weight: bold;
+}
+
+.login-button {
+	float: none;
+	margin: 32px auto 0;
+	width: 96px;
+}
+
+.login-button button {
+	height: 36px;
+	width: 96px;
+	background-color: #428bca;
+	border-color: #B3B3B3;
+	line-height: 24px;
+	font-size: 16px;
+	padding-top: 4px;
+}
+
+.login-button button:hover {
+	background-color: #B3B3B3;
+	border-color: #B3B3B3;
+}
+
+.form-group {
+	background-color: #E6E6E6;
+	border-radius: 10px;
+	padding: 20px 20px 24px 20px;
+}
+
+.form-control {
+	margin-top: 10px;
+	border-color: #AFAFAF;
+	border-width: 2px;
+}
+
+.check-empty
+{
+   display:none; 
+}
+
+/* Error Message*/
+.announcementmsg
+{
+    padding: 10px;
+    margin: 35px 15px;
+    color: Red;
+    margin: 0;
+    text-align: center;
+}
