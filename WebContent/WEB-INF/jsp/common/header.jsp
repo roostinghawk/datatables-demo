@@ -15,25 +15,13 @@
 	                    <ul class="dropdown-menu nav navbar-nav pull-left" role="menu">
 	                        <li class="nav-li"><a href="<c:url value="/home" />"><span class=''><span class='nav-menu-item'>
 	                            Home</span></span></a></li>
-	                        <li class="nav-li"><a href="<c:url value="/mybooking" />"><span class=''><span class='nav-menu-item'>
-	                            View Availability</span></span></a></li>
+	                        <li class="nav-li"><a href="<c:url value="/create" />"><span class=''><span class='nav-menu-item'>
+	                            Create User</span></span></a></li>
 	                        <li class="nav-li"><a href="<c:url value="/bookhistory" />"><span class=''><span class='nav-menu-item'>
 	                            Booking History</span></span></a></li>
 	                        <li class="nav-li"><a href="<c:url value="/resourcesPage" />"><span class=''><span class='nav-menu-item'>
 	                            Resources</span></span></a></li>
 	                    </ul>
-	                </div>
-	            </div>
-	            <div class="">
-	                <!--<span class="glyphicon glyphicon-search searchicon"></span>-->
-	                <div class="titleback">
-	                    <div class="text-center title">
-	                        <!--<img src="img/logoItem.png" width="23" height="29" style="float:left;"/>-->
-	                        ${headerTitle}
-	                    </div>
-	                    <div class="logout-icon" onMouseOver="$(this).tooltip('show')" data-toggle="tooltip" data-placement="bottom" title="Log Out" >
-	                            <img id="iconLogout" src="<c:url value="/resources" />/img/home-logout.png">
-	                    </div>
 	                </div>
 	            </div>
 	        </div>

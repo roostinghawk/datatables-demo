@@ -4,13 +4,24 @@ package com.liu.demo.dao;
 import java.util.List;
 
 import com.liu.demo.entity.UserEntity;
+import com.liu.demo.model.UserModel;
 
 public interface UserDao {
 	
 	/**
+	 * count all users.
+	 */
+	int countAllUser();
+	
+	/**
+	 * count users.
+	 */
+	int countUser(UserModel user);
+	
+	/**
 	 * select users.
 	 */
-	List<UserEntity> getUser(String userFirstName);
+	List<UserEntity> getUsers(UserModel user);
 
 	/**
 	 * Get user by id.
@@ -20,6 +31,6 @@ public interface UserDao {
 	/**
 	 * Creat user.
 	 */
-	long createusers(UserEntity user);
+	int createuser(UserModel user);
 
 }
