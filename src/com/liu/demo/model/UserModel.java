@@ -10,6 +10,7 @@ public class UserModel {
 	private int disabled;
 	private String createDatetime;
 	
+	private int draw;
 	private int start;
 	private int length;
 	private String searchText;
@@ -100,5 +101,13 @@ public class UserModel {
 
 	public void setSearchText(String searchText) {
 		this.searchText = searchText;
+	}
+
+	public int getDraw() {
+		return draw;
+	}
+
+	public void setDraw(int draw) {
+		this.draw = draw;
 	}
 }

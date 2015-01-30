@@ -1,5 +1,6 @@
 package com.liu.demo.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,15 +35,22 @@ public class UserDaoImp implements UserDao {
 
 	public int countUser(UserModel user) {
 		// get count
-		int count = this.jdbcTemplate.queryForObject(COUNT_USERS,
+		Object[] params;
+		String sql = this.bindSqlCondition(COUNT_USERS, user, params);
+		int count = this.jdbcTemplate.queryForObject(sql,
 				new CountMapper(),
-				new Object[]{});
+				params);
 
 		return count;
 	}
 
-	public List<UserEntity> getUsers(UserModel model) {
-		List<UserEntity> users = this.jdbcTemplate.query(SELECT_USERS,
+	public List<UserEntity> getUsers(UserModel user) {
+		String sql = this.bindSqlCondition(SELECT_USERS, user);
+		
+		// limit to current page
+		sql += " limit " + user.getStart() + "," + user.getLength();
+		
+		List<UserEntity> users = this.jdbcTemplate.query(sql,
 				new UserEntityMapper(),
 				new Object[]{});
 		
@@ -59,6 +67,29 @@ public class UserDaoImp implements UserDao {
 				user.getUsername(), user.getGender(), user.getMobile(), user.getEmail()});
 		
 		return result;
+	}
+	
+	// bind search conditions
+	private String bindSqlCondition(String sql, UserModel user, Object[] params){
+		StringBuffer buffer = new StringBuffer(sql);
+		List<Object> paramList = new ArrayList<Object>();
+		
+		// search text
+		String searchText = user.getSearchText();
+		if(searchText != ""){
+		    buffer.append(" and (username=? or mobile=? or email=?)");
+		    paramList.add(searchText);
+		    paramList.add(searchText);
+		    paramList.add(searchText);
+		}
+		
+		params = paramList.toArray();
+		
+		// order
+		
+		
+		
+		return buffer.toString();
 	}
 
 }

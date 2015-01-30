@@ -32,11 +32,10 @@ public class HomeController {
 	@RequestMapping("/getUsers")
 	@ResponseBody
 	public JsonResult getUsers(HttpServletRequest request) {
+		JsonResult result = new JsonResult();
 		
-		// init search condition
-		UserModel user = new UserModel();
-//		user.setStart(request.getParameter("start"));
-//		user.setStart(request.getParameter("start"));
+		// get parameters
+		UserModel user = this.getUserModel(request);
 
 		// get all count
 		int recordsTotal = userService.countAllUser();
@@ -45,12 +44,33 @@ public class HomeController {
 		// --- get my periods(one or two)
 		List<UserEntity> users = userService.getUsers(user);
 		
-		JsonResult result = new JsonResult();
 		result.setData(users);
-		result.setDraw("1");
+		result.setDraw(user.getDraw());
 		result.setRecordsFiltered(recordsFiltered);
 		result.setRecordsTotal(recordsTotal);
 		
 		return result;
+	}
+	
+	private UserModel getUserModel(HttpServletRequest request){
+		int draw, start, length;
+		
+		// must parse draw to integer to prevent Cross Site Scripting (XSS) attacks 
+		try{
+			draw = Integer.parseInt(request.getParameter("draw"));
+			start = Integer.parseInt(request.getParameter("start"));
+			length = Integer.parseInt(request.getParameter("length"));
+		} catch (NumberFormatException ex){
+			return null;
+		}
+		
+		String searchText = request.getParameter("search[value]");
+		
+		UserModel user = new UserModel();
+		user.setDraw(draw);
+		user.setStart(start);
+		user.setLength(length);
+		
+		return user;
 	}
 }
