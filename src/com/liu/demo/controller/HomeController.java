@@ -70,6 +70,7 @@ public class HomeController {
 		user.setDraw(draw);
 		user.setStart(start);
 		user.setLength(length);
+		user.setSearchText(searchText);
 		
 		return user;
 	}
