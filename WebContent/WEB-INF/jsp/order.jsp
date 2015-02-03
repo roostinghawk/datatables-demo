@@ -7,7 +7,7 @@
 
 <t:layout  userName="liu">
 	<div id="page-wrapper">
-<h1 class="form-header">Basic table</h1>
+<h1 class="form-header">Order Test</h1>
 	
 		<div class="row">
 			<div class="col-lg-12">
@@ -39,4 +39,4 @@
 	</div>
 </t:layout>
 
-<script src="<c:url value="/resources/js/user-home.js" />"></script>
+<script src="<c:url value="/resources/js/user-order.js" />"></script>

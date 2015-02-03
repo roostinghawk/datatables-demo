@@ -1,6 +1,8 @@
 package com.liu.demo.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,7 +18,7 @@ import com.liu.demo.model.UserModel;
 import com.liu.demo.service.UserService;
 
 @Controller
-public class HomeController {
+public class SearchController {
 	
 	@Autowired
 	private UserService userService;
@@ -24,12 +26,12 @@ public class HomeController {
     /**
      * Initialization of Home page
      */
-	@RequestMapping(value = { "/", "/home"})
+	@RequestMapping(value = { "/search"})
 	public ModelAndView init(HttpServletRequest request) {
-		return new ModelAndView("home");
+		return new ModelAndView("search");
 	}
 	
-	@RequestMapping("/home/getUsers")
+	@RequestMapping("/search/getUsers")
 	@ResponseBody
 	public JsonResult getUsers(HttpServletRequest request) {
 		JsonResult result = new JsonResult();
@@ -64,13 +66,39 @@ public class HomeController {
 			return null;
 		}
 		
+		// gender
+		String gender = request.getParameter("gender");
+		
+		// search text
+		String isRegexSearch = request.getParameter("search[regex]");
 		String searchText = request.getParameter("search[value]");
 		
+		// search order
+		int index = 0;
+		Map<Integer, String> orders = new HashMap<Integer, String>();
+		String colIndex = request.getParameter("order[0][column]");
+		while(colIndex != null) {
+			// get direction
+			String dir = request.getParameter("order[" + index + "][dir]");
+			orders.put(Integer.parseInt(colIndex), dir);
+			
+			// get next order
+			index ++;
+			colIndex = request.getParameter("order[" + index + "][column]");
+		}
+
 		UserModel user = new UserModel();
+		if(gender != null && gender!= ""){
+		   user.setGender(Integer.parseInt(gender));
+		}
 		user.setDraw(draw);
 		user.setStart(start);
 		user.setLength(length);
+		if(isRegexSearch != null && "true".equals(isRegexSearch)){
+		    user.setRegexSearch(true);
+		}
 		user.setSearchText(searchText);
+		user.setOrders(orders);
 		
 		return user;
 	}

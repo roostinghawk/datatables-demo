@@ -15,12 +15,12 @@
 	                    <ul class="dropdown-menu nav navbar-nav pull-left" role="menu">
 	                        <li class="nav-li"><a href="<c:url value="/home" />"><span class=''><span class='nav-menu-item'>
 	                            Home</span></span></a></li>
+	                        <li class="nav-li"><a href="<c:url value="/order" />"><span class=''><span class='nav-menu-item'>
+	                            Order</span></span></a></li>
+	                        <li class="nav-li"><a href="<c:url value="/search" />"><span class=''><span class='nav-menu-item'>
+	                            Search</span></span></a></li>
 	                        <li class="nav-li"><a href="<c:url value="/create" />"><span class=''><span class='nav-menu-item'>
 	                            Create User</span></span></a></li>
-	                        <li class="nav-li"><a href="<c:url value="/bookhistory" />"><span class=''><span class='nav-menu-item'>
-	                            Booking History</span></span></a></li>
-	                        <li class="nav-li"><a href="<c:url value="/resourcesPage" />"><span class=''><span class='nav-menu-item'>
-	                            Resources</span></span></a></li>
 	                    </ul>
 	                </div>
 	            </div>

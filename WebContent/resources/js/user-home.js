@@ -3,14 +3,12 @@
     	home:function(){
     		var contextPath = $('body').data('context-path');
     		var $tblUsers = $('#dataTables-users');
-    		var getUserUrl = contextPath + "/getUsers";
+    		var getUserUrl = contextPath + "/home/getUsers";
  
      	    $tblUsers.dataTable( {
 			     "serverSide": true,
 			     "ajax": getUserUrl,
 			     "columns" : [
-			                    { "data": "id" },
-			                    { "data": "uid" },
 			                    { "data": "username" },           
 			                    { "data": "gender" },
 			                    { "data": "mobile" },

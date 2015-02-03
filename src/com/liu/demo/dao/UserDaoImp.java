@@ -2,6 +2,7 @@ package com.liu.demo.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -35,24 +36,29 @@ public class UserDaoImp implements UserDao {
 
 	public int countUser(UserModel user) {
 		// get count
-		Object[] params;
-		String sql = this.bindSqlCondition(COUNT_USERS, user, params);
-		int count = this.jdbcTemplate.queryForObject(sql,
+		List<Object> paramsList = new ArrayList<Object>();
+		StringBuffer sql = this.bindSqlCondition(COUNT_USERS, user, paramsList);
+		int count = this.jdbcTemplate.queryForObject(sql.toString(),
 				new CountMapper(),
-				params);
+				paramsList.toArray());
 
 		return count;
 	}
 
 	public List<UserEntity> getUsers(UserModel user) {
-		String sql = this.bindSqlCondition(SELECT_USERS, user);
+		List<Object> paramList = new ArrayList<Object>();
+		StringBuffer sql = this.bindSqlCondition(SELECT_USERS, user, paramList);
+		
+		// bind order
+		this.bindOrders(sql, user);
 		
 		// limit to current page
-		sql += " limit " + user.getStart() + "," + user.getLength();
+		sql.append(" limit " + user.getStart() + "," + user.getLength());
 		
-		List<UserEntity> users = this.jdbcTemplate.query(sql,
+		
+		List<UserEntity> users = this.jdbcTemplate.query(sql.toString(),
 				new UserEntityMapper(),
-				new Object[]{});
+				paramList.toArray());
 		
 		return users;
 	}
@@ -70,26 +76,79 @@ public class UserDaoImp implements UserDao {
 	}
 	
 	// bind search conditions
-	private String bindSqlCondition(String sql, UserModel user, Object[] params){
+	private StringBuffer bindSqlCondition(String sql, UserModel user, List<Object> paramList){
 		StringBuffer buffer = new StringBuffer(sql);
-		List<Object> paramList = new ArrayList<Object>();
+		
+		// gender
+		int gender = user.getGender();
+		if(gender != -1){
+			buffer.append(" and gender = ? ");
+			paramList.add(gender);
+		}
 		
 		// search text
 		String searchText = user.getSearchText();
 		if(searchText != ""){
-		    buffer.append(" and (username=? or mobile=? or email=?)");
-		    paramList.add(searchText);
-		    paramList.add(searchText);
-		    paramList.add(searchText);
+			boolean isRegexSearch = user.isRegexSearch();
+			if(isRegexSearch){
+			    buffer.append(" and (username regexp ? or mobile regexp ? or email regexp ?)");
+			    paramList.add(searchText);
+			    paramList.add(searchText);
+			    paramList.add(searchText);
+			} else{
+			    buffer.append(" and (username like ? or mobile like ? or email like ?)");
+			    paramList.add("%" + searchText + "%");
+			    paramList.add("%" + searchText + "%");
+			    paramList.add("%" + searchText + "%");
+			}
 		}
 		
-		params = paramList.toArray();
-		
+		return buffer;
+	}
+	
+	private void bindOrders(StringBuffer sqlBuffer, UserModel user){
 		// order
+		Map<Integer, String> orders = user.getOrders();
+		if(orders != null && orders.size() > 0) {
+			sqlBuffer.append(" order by ");
+			
+			for(Map.Entry<Integer, String> order : user.getOrders().entrySet()){
+				
+				switch(order.getKey()){
+				    // user name
+					case 0 : {
+						sqlBuffer.append(" username ");
+						break;
+					}
+					case 1 : {
+						sqlBuffer.append(" gender ");
+						break;
+					}
+					case 2 : {
+						sqlBuffer.append(" mobile ");
+						break;
+					} 
+					case 3 : {
+						sqlBuffer.append(" email ");
+						break;
+					} 
+					case 4 : {
+						sqlBuffer.append(" disabled ");
+						break;
+					} 			
+					case 5 : {
+						sqlBuffer.append(" createDatetime ");
+						break;
+					} 	
+				}
+				// direction
+				sqlBuffer.append(order.getValue() + ",");
+			}
+			
+			// remove the last comma
+			sqlBuffer = sqlBuffer.deleteCharAt(sqlBuffer.length() - 1);
+		}
 		
-		
-		
-		return buffer.toString();
 	}
 
 }

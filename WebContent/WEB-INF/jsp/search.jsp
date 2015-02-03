@@ -7,7 +7,23 @@
 
 <t:layout  userName="liu">
 	<div id="page-wrapper">
-<h1 class="form-header">Basic table</h1>
+<h1 class="form-header">Search Test</h1>
+
+	<div class="form-group">
+	    <label for="search-category-select" class="col-sm-1 control-label">性别</label>
+	    <div class="col-sm-3">
+	    	<select class="form-control" id="search-gender-select" style="margin-bottom:10px;">
+	    	  <option value="" selected></option>
+	    	  <option value="0">男</option>
+	    	  <option value="1">女</option>
+			</select>
+	     </div>
+	  </div>
+	  
+	  <div>
+	     <input type="button" id="search-button" class="btn btn-success" value="检索"> </input>
+	  </div>
+	 </div>
 	
 		<div class="row">
 			<div class="col-lg-12">
@@ -25,8 +41,8 @@
 				                                <th>性别</th>
 				                                <th>联系电话</th>
 				                                <th>Email</th>
-				                                <th>禁用</th>
 				                                <th>注册时间</th>
+				                                <th>禁用</th>	                                
 								            </tr>
 								        </thead>
 								</table>
@@ -39,4 +55,4 @@
 	</div>
 </t:layout>
 
-<script src="<c:url value="/resources/js/user-home.js" />"></script>
+<script src="<c:url value="/resources/js/user-search.js" />"></script>

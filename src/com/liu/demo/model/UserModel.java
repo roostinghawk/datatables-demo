@@ -1,10 +1,13 @@
 package com.liu.demo.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class UserModel {
 	private long id;
 	private String uid;
 	private String username;
-	private int gender;
+	private int gender = -1;
 	private String mobile;
 	private String email;
 	private int disabled;
@@ -13,7 +16,11 @@ public class UserModel {
 	private int draw;
 	private int start;
 	private int length;
+	private boolean isRegexSearch;
 	private String searchText;
+	
+	// orders
+	private Map<Integer, String> orders = new HashMap<Integer, String>();
 	
 	public long getId() {
 		return id;
@@ -109,5 +116,21 @@ public class UserModel {
 
 	public void setDraw(int draw) {
 		this.draw = draw;
+	}
+
+	public Map<Integer, String> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Map<Integer, String> orders) {
+		this.orders = orders;
+	}
+
+	public boolean isRegexSearch() {
+		return isRegexSearch;
+	}
+
+	public void setRegexSearch(boolean isRegexSearch) {
+		this.isRegexSearch = isRegexSearch;
 	}
 }
