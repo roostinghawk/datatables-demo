@@ -54,6 +54,19 @@ public class SearchController {
 		return result;
 	}
 	
+	@RequestMapping("/search/getUser")
+	@ResponseBody
+	public UserEntity getUser(HttpServletRequest request) {
+		JsonResult result = new JsonResult();
+		
+		// get parameters
+		String id = request.getParameter("id");
+		// --- get my periods(one or two)
+		UserEntity user = userService.getUser(id);
+		
+		return user;
+	}
+	
 	private UserModel getUserModel(HttpServletRequest request){
 		int draw, start, length;
 		

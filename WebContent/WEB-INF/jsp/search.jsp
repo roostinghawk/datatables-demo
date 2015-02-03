@@ -53,6 +53,35 @@
 			</div>
 		</div>
 	</div>
+	
+<!--Order detail Modal -->
+<div class="modal fade" style="text-align: left;" id="user-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">用户详细</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped">
+	        <tr><td>ID&nbsp;&nbsp;</td><td><label id="lblUserId"></label></td>
+	           <td>GUID </td><td><label id="lblUserGuid"></label></td></tr>
+	        <tr><td>会员名</td><td><label id="lblUsername"></label></td>
+	            <td>性别</td><td><label id="lblGender"></label></td></tr>
+	        <tr><td>电话</td><td><label id="lblMobile"></label></td>
+	            <td>Email</td><td><label id="lblEmail"></label></td></tr>
+	        <tr><td>注册时间&nbsp;</td><td><label id="lblCreateTime"></label></td>
+	            <td>禁用</td><td> <label id="lblDisabled"></label></td></tr>
+        </table>
+          
+		</div> <!-- /.modal-body -->
+		
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	      </div>
+    </div> <!-- /.modal-content -->
+  </div> <!-- /.modal-dialog -->
+</div> <!-- /.modal -->
 </t:layout>
 
 <script src="<c:url value="/resources/js/user-search.js" />"></script>

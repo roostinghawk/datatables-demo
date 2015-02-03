@@ -13,5 +13,7 @@ public interface UserService {
 	
 	List<UserEntity> getUsers(UserModel user);
 	
+	UserEntity getUser(String id);
+	
 	int createuser(UserModel user);
 }

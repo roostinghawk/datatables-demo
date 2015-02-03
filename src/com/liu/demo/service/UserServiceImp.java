@@ -27,6 +27,10 @@ public class UserServiceImp implements UserService{
 		return userDao.getUsers(user);
 	}
 	
+	public UserEntity getUser(String id){
+		return userDao.getUserById(id);
+	}
+	
 	public int createuser(UserModel user){
 		return userDao.createuser(user);
 	}

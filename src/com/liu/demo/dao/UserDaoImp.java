@@ -25,6 +25,8 @@ public class UserDaoImp implements UserDao {
 	
 	private static String SELECT_USERS= "select * from user where 1=1";
 	
+	private static String SELECT_USER_BY_ID= "select * from user where id=?";
+	
 	private static String ADD_USER= "insert into user(uid,username,gender,mobile,email,disabled,createDatetime) values(uuid(),?,?,?,?,0,now())";
     
 	public int countAllUser() {
@@ -54,8 +56,7 @@ public class UserDaoImp implements UserDao {
 		
 		// limit to current page
 		sql.append(" limit " + user.getStart() + "," + user.getLength());
-		
-		
+
 		List<UserEntity> users = this.jdbcTemplate.query(sql.toString(),
 				new UserEntityMapper(),
 				paramList.toArray());
@@ -64,7 +65,15 @@ public class UserDaoImp implements UserDao {
 	}
 
 	public UserEntity getUserById(String id) {
-		// TODO Auto-generated method stub
+
+		List<UserEntity> users = this.jdbcTemplate.query(SELECT_USER_BY_ID,
+				new UserEntityMapper(),
+				new Object[]{id});
+		
+		if(users != null && users.size() >= 1){
+			return users.get(0);
+		}
+		
 		return null;
 	}
 
