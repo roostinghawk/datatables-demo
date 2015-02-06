@@ -16,4 +16,6 @@ public interface UserService {
 	UserEntity getUser(String id);
 	
 	int createuser(UserModel user);
+	
+	int updateUser(int id, int status);
 }

@@ -41,7 +41,7 @@
 				                                <th>性别</th>
 				                                <th>联系电话</th>
 				                                <th>Email</th>
-				                                <th>注册时间</th>
+				                                <th>注册日期</th>
 				                                <th>禁用</th>	                                
 								            </tr>
 								        </thead>
@@ -64,13 +64,13 @@
       </div>
       <div class="modal-body">
         <table class="table table-striped">
-	        <tr><td>ID&nbsp;&nbsp;</td><td><label id="lblUserId"></label></td>
+	        <tr><td>ID</td><td><label id="lblUserId"></label></td>
 	           <td>GUID </td><td><label id="lblUserGuid"></label></td></tr>
 	        <tr><td>会员名</td><td><label id="lblUsername"></label></td>
 	            <td>性别</td><td><label id="lblGender"></label></td></tr>
 	        <tr><td>电话</td><td><label id="lblMobile"></label></td>
 	            <td>Email</td><td><label id="lblEmail"></label></td></tr>
-	        <tr><td>注册时间&nbsp;</td><td><label id="lblCreateTime"></label></td>
+	        <tr><td>注册</td><td><label id="lblCreateTime"></label></td>
 	            <td>禁用</td><td> <label id="lblDisabled"></label></td></tr>
         </table>
           

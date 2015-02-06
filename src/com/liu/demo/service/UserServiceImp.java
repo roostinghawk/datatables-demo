@@ -34,5 +34,9 @@ public class UserServiceImp implements UserService{
 	public int createuser(UserModel user){
 		return userDao.createuser(user);
 	}
+	
+	public int updateUser(int id, int status){
+		return userDao.updateUser(id, status);
+	}
 
 }

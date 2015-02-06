@@ -32,5 +32,10 @@ public interface UserDao {
 	 * Creat user.
 	 */
 	int createuser(UserModel user);
+	
+	/**
+	 * Update user status.
+	 */
+	int updateUser(int id, int status);
 
 }

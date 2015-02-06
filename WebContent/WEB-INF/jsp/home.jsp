@@ -26,7 +26,7 @@
 				                                <th>联系电话</th>
 				                                <th>Email</th>
 				                                <th>禁用</th>
-				                                <th>注册时间</th>
+				                                <th>注册日期</th>
 								            </tr>
 								        </thead>
 								</table>

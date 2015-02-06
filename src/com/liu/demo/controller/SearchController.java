@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -43,7 +44,7 @@ public class SearchController {
 		int recordsTotal = userService.countAllUser();
 		// get count
 		int recordsFiltered = userService.countUser(user);
-		// --- get my periods(one or two)
+		// get users
 		List<UserEntity> users = userService.getUsers(user);
 		
 		result.setData(users);
@@ -57,14 +58,18 @@ public class SearchController {
 	@RequestMapping("/search/getUser")
 	@ResponseBody
 	public UserEntity getUser(HttpServletRequest request) {
-		JsonResult result = new JsonResult();
-		
 		// get parameters
 		String id = request.getParameter("id");
 		// --- get my periods(one or two)
 		UserEntity user = userService.getUser(id);
 		
 		return user;
+	}
+	
+	@RequestMapping("/search/updateUser/{id}/{status}")
+	@ResponseBody
+	public int updateUser(@PathVariable int id, @PathVariable int status){
+		return userService.updateUser(id, status);
 	}
 	
 	private UserModel getUserModel(HttpServletRequest request){

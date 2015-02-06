@@ -3,18 +3,22 @@
     	search:function(){
     		var contextPath = $('body').data('context-path');
     		var $tblUsers = $('#dataTables-users');
-    		var getUserUrl = contextPath + "/search/getUsers";
-    		var getUserDetailUrl = contextPath + "/search/getUser";
     		var $genderSelect = $('#search-gender-select');
     		var $searchBtn = $('#search-button');
     		var $userModal = $('#user-modal');
     		
+    		var getUserUrl = contextPath + "search/getUsers";
+    		var getUserDetailUrl = contextPath + "search/getUser";
+    		var updateUserUrl = contextPath + "search/updateUser";	
  
      	    var dataTable = $tblUsers.DataTable( {
      	    	"search" :{
      	    		//"regex": true,
      	    		//"caseInsensitive": false,
      	    	},
+			     "language": {
+			         "url": contextPath + "/resources/js/dataTables/lang/dataTables.cn.lang"
+			     },
 			    "serverSide": true,
 			    "ajax":  {
 			    	"url" : getUserUrl,
@@ -72,10 +76,16 @@
      	   
     	   // process after talbe init
      	  $tblUsers.on("draw.dt",function (){
-    		   // bind event - show order detail
-     		 $tblUsers.find('a').on('click',function(){
-    			   bindShowUserDetailEvent($(this))
-    		   })
+    		 // bind event - show order detail
+     		 $tblUsers.find('a').off('click').on('click',function(){
+    			   bindShowUserDetailEvent($(this));
+    		 });
+     		 
+     		 // bind event - disable or enable user
+     		 $tblUsers.find('button.btn').off('click').on('click',function(){
+  			       bindUpdateUserEvent($(this));
+  		     });
+     		 
 		   });  
     	   
     	   // customize order modal
@@ -122,6 +132,42 @@
 					   $userModal.modal('show');
 				   }
 			   }); 
+    	   };
+    	   
+    	   var bindUpdateUserEvent = function($btn){
+			   var $tr = $btn.parents('tr');
+   			   var id = $tr.attr('id');
+   			   var toStatus = 1; // to disable
+   			   // if the button is "enable" now
+   			   if($btn.hasClass('btn-success')){
+   				  toStatus = 0; //
+   			   }
+   			   
+   			   var updateUrl = updateUserUrl + "/" + id + "/" + toStatus;
+   			   $.ajax({
+   				   type: "get",
+   				   url: updateUrl,
+   				   success: function(result){
+   					  if(result == 1){
+   						  if($btn.hasClass('btn-success')){
+   							$btn.removeClass('btn-success').addClass('btn-danger');
+   							$btn.html('禁止');
+   						  } else{
+   							$btn.removeClass('btn-danger').addClass('btn-success');
+   							$btn.html('启用');
+   						  }
+   					  } else{
+                          alertMessage("更新失败", "Fail");
+                          $("#FailalertDiv").modal("show");
+   					  }
+   				   },
+   				   fail: function(){
+   					  alertMessage("更新失败", "Fail");
+   					  $("#FailalertDiv").modal("show");
+   				   }
+   			   });
+   			   
+   			   
     	   };
      	    
     	}

@@ -23,11 +23,13 @@ public class UserDaoImp implements UserDao {
     
 	private static String COUNT_USERS = "select count(1) from user where 1=1";
 	
-	private static String SELECT_USERS= "select * from user where 1=1";
+	private static String SELECT_USERS= "select id, uid, username, gender, mobile, email, disabled, DATE_FORMAT(createDatetime,'%Y-%m-%d') as createDatetime from user where 1=1";
 	
-	private static String SELECT_USER_BY_ID= "select * from user where id=?";
+	private static String SELECT_USER_BY_ID= "select id, uid, username, gender, mobile, email, disabled, DATE_FORMAT(createDatetime,'%Y-%m-%d') as createDatetime from user where id=?";
 	
 	private static String ADD_USER= "insert into user(uid,username,gender,mobile,email,disabled,createDatetime) values(uuid(),?,?,?,?,0,now())";
+	
+	private static String UPDATE_USER = "update user set disabled=? where id=?";
     
 	public int countAllUser() {
 		// get count
@@ -55,7 +57,9 @@ public class UserDaoImp implements UserDao {
 		this.bindOrders(sql, user);
 		
 		// limit to current page
-		sql.append(" limit " + user.getStart() + "," + user.getLength());
+		if(user.getLength() > 0 ){
+		    sql.append(" limit " + user.getStart() + "," + user.getLength());
+		}
 
 		List<UserEntity> users = this.jdbcTemplate.query(sql.toString(),
 				new UserEntityMapper(),
@@ -84,6 +88,12 @@ public class UserDaoImp implements UserDao {
 		return result;
 	}
 	
+	public int updateUser(int id, int status){
+		int result = this.jdbcTemplate.update(UPDATE_USER, new Object[]{status, id});
+		
+		return result;
+	}
+	
 	// bind search conditions
 	private StringBuffer bindSqlCondition(String sql, UserModel user, List<Object> paramList){
 		StringBuffer buffer = new StringBuffer(sql);
@@ -97,7 +107,7 @@ public class UserDaoImp implements UserDao {
 		
 		// search text
 		String searchText = user.getSearchText();
-		if(searchText != ""){
+		if(searchText != null && searchText != ""){
 			boolean isRegexSearch = user.isRegexSearch();
 			if(isRegexSearch){
 			    buffer.append(" and (username regexp ? or mobile regexp ? or email regexp ?)");

@@ -41,7 +41,7 @@ public class HomeController {
 		int recordsTotal = userService.countAllUser();
 		// get count
 		int recordsFiltered = userService.countUser(user);
-		// --- get my periods(one or two)
+		// get users
 		List<UserEntity> users = userService.getUsers(user);
 		
 		result.setData(users);

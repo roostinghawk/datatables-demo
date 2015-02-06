@@ -14,11 +14,15 @@
 	                    </button>
 	                    <ul class="dropdown-menu nav navbar-nav pull-left" role="menu">
 	                        <li class="nav-li"><a href="<c:url value="/home" />"><span class=''><span class='nav-menu-item'>
-	                            Home</span></span></a></li>
+	                            Basic</span></span></a></li>
+	                        <li class="nav-li"><a href="<c:url value="/simple" />"><span class=''><span class='nav-menu-item'>
+	                            Simple</span></span></a></li>
 	                        <li class="nav-li"><a href="<c:url value="/order" />"><span class=''><span class='nav-menu-item'>
 	                            Order</span></span></a></li>
 	                        <li class="nav-li"><a href="<c:url value="/search" />"><span class=''><span class='nav-menu-item'>
 	                            Search</span></span></a></li>
+	                        <li class="nav-li"><a href="<c:url value="/extension" />"><span class=''><span class='nav-menu-item'>
+	                            Extension</span></span></a></li>	                            
 	                        <li class="nav-li"><a href="<c:url value="/create" />"><span class=''><span class='nav-menu-item'>
 	                            Create User</span></span></a></li>
 	                    </ul>

@@ -10,6 +10,8 @@
 	<link href="<c:url value="/resources/css/common.css" />" rel="stylesheet">
 	<link href="<c:url value="/resources/css/home.css" />" rel="stylesheet">
 	<link href="<c:url value="/resources/css/dataTables.bootstrap.css" />" rel="stylesheet">
+	<link href="<c:url value="/resources/extensions/ColReorder/css/dataTables.colReorder.min.css" />" rel="stylesheet">
+	<link href="<c:url value="/resources/extensions/FixedColumns/css/dataTables.fixedColumns.min.css" />" rel="stylesheet">
 	<script src="<c:url value="/resources/js/jquery-1.10.2.min.js" />"></script>
 </head>   
 
