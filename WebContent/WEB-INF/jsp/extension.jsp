@@ -27,11 +27,6 @@
 				                                <th>Email</th>
 				                                <th>禁用</th>
 				                                <th>注册日期</th>
-				                                <th>注册日期</th>
-				                                <th>注册日期</th>
-				                                <th>注册日期</th>
-				                                <th>注册日期</th>
-				                                <th>注册日期</th>
 								            </tr>
 								        </thead>
 								</table>
@@ -46,4 +41,4 @@
 
 <script src="<c:url value="/resources/js/user-extension.js" />"></script>
 <script src="<c:url value="/resources/extensions/ColReorder/js/dataTables.colReorder.min.js" />"></script>
-<script src="<c:url value="/resources/extensions/FixedColumns/js/dataTables.fixedColumns.min.js" />"></script>
+<script src="<c:url value="/resources/extensions/FixedColumns/js/dataTables.fixedColumns.js" />"></script>

@@ -8,7 +8,7 @@
      	    var table = $tblUsers.DataTable( {
      	    	 //"dom" : "Rlfrtip", // Column reorder
      			 "scrollY": "300px",
-     			 "scrollX":  "100%",
+     			 "scrollX":  true,
      			 "scrollCollapse": true,
      			 "paging" : false,
      			 "ordering" : false,
@@ -22,15 +22,12 @@
 			                    { "data": "email" },
 			                    { "data": "disabled" },
 			                    { "data": "createDatetime" },
-			                    { "data": "createDatetime" },
-			                    { "data": "createDatetime" },
-			                    { "data": "createDatetime" },
-			                    { "data": "createDatetime" },
-			                    { "data": "createDatetime" },
 						     ]
 			   } );	
      	    
-     	   new $.fn.dataTable.FixedColumns(table);
+     	   new $.fn.dataTable.FixedColumns(table, {
+     		   leftColumns: 1,
+     	   });
     	}
     });
 })(jQuery);
