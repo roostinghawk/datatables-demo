@@ -21,12 +21,12 @@
 								       cellspacing="0">
 								        <thead>
 								            <tr>
-				                                <th>会员名</th>
-				                                <th>性别</th>
-				                                <th>联系电话</th>
-				                                <th>Email</th>
-				                                <th>禁用</th>
-				                                <th>注册日期</th>
+				                                <th width="20%">会员名</th>
+				                                <th width="10%">性别</th>
+				                                <th width="20%">联系电话</th>
+				                                <th width="20%">Email</th>
+				                                <th width="10%">禁用</th>
+				                                <th width="20%">注册日期</th>
 								            </tr>
 								        </thead>
 								</table>
@@ -42,3 +42,5 @@
 <script src="<c:url value="/resources/js/user-extension.js" />"></script>
 <script src="<c:url value="/resources/extensions/ColReorder/js/dataTables.colReorder.min.js" />"></script>
 <script src="<c:url value="/resources/extensions/FixedColumns/js/dataTables.fixedColumns.js" />"></script>
+<script src="<c:url value="/resources/extensions/ColVis/js/dataTables.colVis.min.js" />"></script>
+<script src="<c:url value="/resources/extensions/Responsive/js/dataTables.responsive.min.js" />"></script>

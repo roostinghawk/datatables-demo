@@ -15,6 +15,9 @@
 	<link href="<c:url value="/resources/css/home.css" />" rel="stylesheet">
 	<link href="<c:url value="/resources/extensions/ColReorder/css/dataTables.colReorder.min.css" />" rel="stylesheet">
 	<link href="<c:url value="/resources/extensions/FixedColumns/css/dataTables.fixedColumns.min.css" />" rel="stylesheet">
+	<link href="<c:url value="/resources/extensions/ColVis/css/dataTables.colVis.min.css" />" rel="stylesheet">
+	<link href="<c:url value="/resources/extensions/ColVis/css/dataTables.colvis.jqueryui.css" />" rel="stylesheet">
+	<link href="<c:url value="/resources/extensions/ColVis/css/dataTables.responsive.css" />" rel="stylesheet">
 	<script src="<c:url value="/resources/js/jquery-1.11.2.js" />"></script>
 </head>   
 

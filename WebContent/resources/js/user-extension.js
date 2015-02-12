@@ -6,13 +6,15 @@
     		var getUserUrl = contextPath + "/home/getUsers";
  
      	    var table = $tblUsers.DataTable( {
-     	    	 //"dom" : "Rlfrtip", // Column reorder
+     	    	 "dom" : 'Rlfrtip', // Column reorder
+     	    	 //"dom": 'C<"clear">lfrtip',
      			 "scrollY": "300px",
      			 "scrollX":  true,
      			 "scrollCollapse": true,
      			 "paging" : false,
      			 "ordering" : false,
      			 "searching" : false,
+     			 // "responsive": true, // enable responsive extension
 			     "serverSide": true,
 			     "ajax": getUserUrl,
 			     "columns" : [
