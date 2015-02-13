@@ -5,22 +5,25 @@
     		var $tblUsers = $('#dataTables-users');
     		var getUserUrl = contextPath + "/order/getUsers";
  
-     	    $tblUsers.dataTable( {
+     	    var table = $tblUsers.DataTable( {
      	    	// "sPaginationType": "extStyle", // extjs style
+     	    	'sPaginationType': 'ellipses',
 			     "serverSide": true,
 			     "ajax": getUserUrl,
 			     "columns" : [
 			                    { "data": "username" },           
 			                    { "data": "gender" },
-			                    { "data": "mobile" },
+			                    { "data": "mobile", type: 'phoneNumber'},
 			                    { "data": "email" },
 			                    { "data": "disabled" },
 			                    { "data": "createDatetime" },
-						     ],
-						     columnDefs: [
-						                  { type: 'chinese-string', targets: 0 }
-						                ]
+						     ]
 			   } );	
+     	    
+//     	    $('#txtJump').on('input',function(){
+//     	    	var text = $('#txtJump').val();
+//     	    	table.page.jumpToData(text, 0 );
+//     	    });
     	}
     });
 })(jQuery);

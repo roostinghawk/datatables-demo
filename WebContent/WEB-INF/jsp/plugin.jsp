@@ -8,7 +8,15 @@
 <t:layout  userName="liu">
 	<div id="page-wrapper">
 <h1 class="form-header">Plugin table</h1>
-	
+
+<!-- 	
+	<div class="form-group">
+	    <label for="search-category-select" class="col-sm-1 control-label">Jump</label>
+	    <div class="col-sm-3">
+	    	<input type="text" id="txtJump" />
+	     </div>
+	  </div>
+ -->	  
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
@@ -39,6 +47,10 @@
 	</div>
 </t:layout>
 
-<script src="<c:url value="/resources/js/user-plugin.js" />"></script>
 <script src="<c:url value="/resources/plugin/extjs.js" />"></script>
 <script src="<c:url value="/resources/plugin/chinese.js" />"></script>
+<script src="<c:url value="/resources/plugin/phone.number.js" />"></script>
+<script src="<c:url value="/resources/plugin/four_button.js" />"></script>
+<script src="<c:url value="/resources/plugin/jump.js" />"></script>
+<script src="<c:url value="/resources/plugin/eclipse.js" />"></script>
+<script src="<c:url value="/resources/js/user-plugin.js" />"></script>
