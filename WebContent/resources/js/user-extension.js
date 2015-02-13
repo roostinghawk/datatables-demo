@@ -6,8 +6,14 @@
     		var getUserUrl = contextPath + "/home/getUsers";
  
      	    var table = $tblUsers.DataTable( {
-     	    	 "dom" : 'Rlfrtip', // Column reorder
-     	    	 //"dom": 'C<"clear">lfrtip',
+     	    	 // "dom" : 'Rlfrtip', // Column reorder
+     	    	 // "dom": 'C<"clear">lfrtip', // colvis
+     	    	
+                 // Table tools
+//     	    	 "dom": 'T<"clear">lfrtip',
+//     	    	 "tableTools": {
+//     	             "sSwfPath": contextPath + "resources/extensions/TableTools/swf/copy_csv_xls_pdf.swf"
+//     	         },
      			 "scrollY": "300px",
      			 "scrollX":  true,
      			 "scrollCollapse": true,

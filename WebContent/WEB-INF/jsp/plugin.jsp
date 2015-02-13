@@ -7,7 +7,7 @@
 
 <t:layout  userName="liu">
 	<div id="page-wrapper">
-<h1 class="form-header">Extension table</h1>
+<h1 class="form-header">Plugin table</h1>
 	
 		<div class="row">
 			<div class="col-lg-12">
@@ -21,12 +21,12 @@
 								       cellspacing="0">
 								        <thead>
 								            <tr>
-				                                <th width="20%">会员名</th>
-				                                <th width="10%">性别</th>
-				                                <th width="20%">联系电话</th>
-				                                <th width="20%">Email</th>
-				                                <th width="10%">禁用</th>
-				                                <th width="20%">注册日期</th>
+				                                <th>会员名</th>
+				                                <th>性别</th>
+				                                <th>联系电话</th>
+				                                <th>Email</th>
+				                                <th>禁用</th>
+				                                <th>注册日期</th>
 								            </tr>
 								        </thead>
 								</table>
@@ -39,9 +39,6 @@
 	</div>
 </t:layout>
 
-<script src="<c:url value="/resources/js/user-extension.js" />"></script>
-<script src="<c:url value="/resources/extensions/ColReorder/js/dataTables.colReorder.min.js" />"></script>
-<script src="<c:url value="/resources/extensions/FixedColumns/js/dataTables.fixedColumns.js" />"></script>
-<script src="<c:url value="/resources/extensions/ColVis/js/dataTables.colVis.min.js" />"></script>
-<script src="<c:url value="/resources/extensions/Responsive/js/dataTables.responsive.min.js" />"></script>
-<script src="<c:url value="/resources/extensions/TableTools/js/dataTables.tableTools.min.js" />"></script>
+<script src="<c:url value="/resources/js/user-plugin.js" />"></script>
+<script src="<c:url value="/resources/plugin/extjs.js" />"></script>
+<script src="<c:url value="/resources/plugin/chinese.js" />"></script>

@@ -22,7 +22,9 @@
 	                        <li class="nav-li"><a href="<c:url value="/search" />"><span class=''><span class='nav-menu-item'>
 	                            Search</span></span></a></li>
 	                        <li class="nav-li"><a href="<c:url value="/extension" />"><span class=''><span class='nav-menu-item'>
-	                            Extension</span></span></a></li>	                            
+	                            Extension</span></span></a></li>	
+	                        <li class="nav-li"><a href="<c:url value="/plugin" />"><span class=''><span class='nav-menu-item'>
+	                            Plugin</span></span></a></li>	
 	                        <li class="nav-li"><a href="<c:url value="/create" />"><span class=''><span class='nav-menu-item'>
 	                            Create User</span></span></a></li>
 	                    </ul>
